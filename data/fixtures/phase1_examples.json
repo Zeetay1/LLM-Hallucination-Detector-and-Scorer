@@ -1,0 +1,196 @@
+[
+  {
+    "id": "obvious_1",
+    "claim": "The Eiffel Tower is located in Berlin, Germany.",
+    "context_chunks": [
+      "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It was constructed from 1887 to 1889."
+    ],
+    "label_type": "obvious_hallucination",
+    "expected_overall_score_range": [0.0, 0.25]
+  },
+  {
+    "id": "obvious_2",
+    "claim": "The Pacific Ocean is smaller than Lake Ontario.",
+    "context_chunks": [
+      "The Pacific Ocean is the largest and deepest of Earth's oceanic divisions.",
+      "Lake Ontario is one of the five Great Lakes of North America and is much smaller than any of the world's oceans."
+    ],
+    "label_type": "obvious_hallucination",
+    "expected_overall_score_range": [0.0, 0.25]
+  },
+  {
+    "id": "obvious_3",
+    "claim": "Python is a web browser that was first released in 2015.",
+    "context_chunks": [
+      "Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability.",
+      "The first version of Python was released in 1991 by Guido van Rossum."
+    ],
+    "label_type": "obvious_hallucination",
+    "expected_overall_score_range": [0.0, 0.25]
+  },
+  {
+    "id": "obvious_4",
+    "claim": "Mount Everest is a desert island in the Pacific Ocean.",
+    "context_chunks": [
+      "Mount Everest is Earth's highest mountain above sea level, located in the Himalayas on the border between Nepal and the Tibet Autonomous Region of China."
+    ],
+    "label_type": "obvious_hallucination",
+    "expected_overall_score_range": [0.0, 0.25]
+  },
+  {
+    "id": "obvious_5",
+    "claim": "The human body has three hearts and green blood.",
+    "context_chunks": [
+      "In humans, the heart is a muscular organ responsible for pumping blood through the circulatory system.",
+      "Humans typically have a single heart and red blood due to the presence of hemoglobin."
+    ],
+    "label_type": "obvious_hallucination",
+    "expected_overall_score_range": [0.0, 0.25]
+  },
+  {
+    "id": "obvious_6",
+    "claim": "The iPhone was first released in 1980.",
+    "context_chunks": [
+      "Apple Inc. introduced the first iPhone on January 9, 2007, and released it later that year.",
+      "In the 1980s, Apple focused on personal computers such as the Apple II and Macintosh."
+    ],
+    "label_type": "obvious_hallucination",
+    "expected_overall_score_range": [0.0, 0.25]
+  },
+  {
+    "id": "obvious_7",
+    "claim": "Water boils at 50 degrees Celsius at sea level.",
+    "context_chunks": [
+      "At standard atmospheric pressure (sea level), pure water boils at 100 degrees Celsius (212 degrees Fahrenheit)."
+    ],
+    "label_type": "obvious_hallucination",
+    "expected_overall_score_range": [0.0, 0.25]
+  },
+  {
+    "id": "partial_1",
+    "claim": "The Eiffel Tower was completed in 1889 and is painted bright blue.",
+    "context_chunks": [
+      "The Eiffel Tower was completed in 1889 for the 1889 World's Fair in Paris.",
+      "The tower is repainted every seven years using several shades of brown known as \"Eiffel Tower brown.\""
+    ],
+    "label_type": "partial",
+    "expected_overall_score_range": [0.3, 0.7]
+  },
+  {
+    "id": "partial_2",
+    "claim": "Python is used for data science and was created by Guido van Rossum in the 1990s.",
+    "context_chunks": [
+      "Python is popular in data science, web development, automation, and many other domains.",
+      "Python was created by Guido van Rossum and first released in 1991."
+    ],
+    "label_type": "partial",
+    "expected_overall_score_range": [0.4, 0.75]
+  },
+  {
+    "id": "partial_3",
+    "claim": "The Pacific Ocean is the largest ocean and is entirely in the Northern Hemisphere.",
+    "context_chunks": [
+      "The Pacific Ocean is the largest and deepest of Earth's oceanic divisions.",
+      "It extends from the Arctic Ocean in the north to the Southern Ocean in the south, and from Asia and Australia in the west to the Americas in the east."
+    ],
+    "label_type": "partial",
+    "expected_overall_score_range": [0.3, 0.7]
+  },
+  {
+    "id": "partial_4",
+    "claim": "New York City is in the United States and has exactly 12 million residents.",
+    "context_chunks": [
+      "New York City is the most populous city in the United States, located in the state of New York.",
+      "Its population is in the millions, but the exact number fluctuates over time."
+    ],
+    "label_type": "partial",
+    "expected_overall_score_range": [0.3, 0.7]
+  },
+  {
+    "id": "partial_5",
+    "claim": "FastAPI is a web framework for building APIs in Python and is part of the standard library.",
+    "context_chunks": [
+      "FastAPI is a modern, fast web framework for building APIs with Python based on standard type hints.",
+      "It is an external library that can be installed from PyPI and is not part of the Python standard library."
+    ],
+    "label_type": "partial",
+    "expected_overall_score_range": [0.3, 0.7]
+  },
+  {
+    "id": "partial_6",
+    "claim": "PyTorch is an open-source deep learning framework and was originally developed at Google.",
+    "context_chunks": [
+      "PyTorch is an open-source machine learning framework based on the Torch library.",
+      "It was primarily developed by Facebook's AI Research lab (FAIR)."
+    ],
+    "label_type": "partial",
+    "expected_overall_score_range": [0.3, 0.7]
+  },
+  {
+    "id": "fully_1",
+    "claim": "The Eiffel Tower was completed in 1889 in Paris, France.",
+    "context_chunks": [
+      "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France.",
+      "Construction of the tower was completed in 1889 for the Exposition Universelle."
+    ],
+    "label_type": "fully_grounded",
+    "expected_overall_score_range": [0.75, 1.0]
+  },
+  {
+    "id": "fully_2",
+    "claim": "Python is a high-level programming language widely used in data science.",
+    "context_chunks": [
+      "Python is a high-level, general-purpose programming language.",
+      "It has become one of the dominant languages in data science, machine learning, and scientific computing."
+    ],
+    "label_type": "fully_grounded",
+    "expected_overall_score_range": [0.75, 1.0]
+  },
+  {
+    "id": "fully_3",
+    "claim": "FastAPI is a modern, fast web framework for building APIs with Python.",
+    "context_chunks": [
+      "FastAPI is a modern, fast (high-performance) web framework for building APIs with Python based on standard type hints."
+    ],
+    "label_type": "fully_grounded",
+    "expected_overall_score_range": [0.8, 1.0]
+  },
+  {
+    "id": "fully_4",
+    "claim": "The Pacific Ocean is the largest and deepest of Earth's oceans.",
+    "context_chunks": [
+      "The Pacific Ocean is the largest and deepest of Earth's oceanic divisions, covering more than 30% of the Earth's surface."
+    ],
+    "label_type": "fully_grounded",
+    "expected_overall_score_range": [0.8, 1.0]
+  },
+  {
+    "id": "fully_5",
+    "claim": "Mount Everest is the highest mountain above sea level on Earth.",
+    "context_chunks": [
+      "Mount Everest is Earth's highest mountain above sea level, located in the Himalayas on the border between Nepal and the Tibet Autonomous Region of China."
+    ],
+    "label_type": "fully_grounded",
+    "expected_overall_score_range": [0.8, 1.0]
+  },
+  {
+    "id": "fully_6",
+    "claim": "Water boils at 100 degrees Celsius at standard atmospheric pressure.",
+    "context_chunks": [
+      "At standard atmospheric pressure (sea level), pure water boils at 100 degrees Celsius (212 degrees Fahrenheit)."
+    ],
+    "label_type": "fully_grounded",
+    "expected_overall_score_range": [0.8, 1.0]
+  },
+  {
+    "id": "fully_7",
+    "claim": "PyTorch is an open-source deep learning framework based on the Torch library.",
+    "context_chunks": [
+      "PyTorch is an open-source machine learning framework based on the Torch library.",
+      "It is widely used for deep learning research and production."
+    ],
+    "label_type": "fully_grounded",
+    "expected_overall_score_range": [0.75, 1.0]
+  }
+]
+

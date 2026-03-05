@@ -1,0 +1,139 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+.container {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #020617;
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.8);
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 1.75rem;
+}
+
+.inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.input-block {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 4rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #1f2937;
+  background: #020617;
+  color: #e5e7eb;
+  font-family: inherit;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.5rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #020617;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.results.hidden {
+  display: none;
+}
+
+.results {
+  border-top: 1px solid #1f2937;
+  padding-top: 1rem;
+}
+
+.score-bar {
+  position: relative;
+  height: 12px;
+  border-radius: 999px;
+  background: #0b1120;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.score-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ef4444, #22c55e);
+  transition: width 0.3s ease;
+}
+
+.sentence {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  background: #020617;
+  border: 1px solid #1f2937;
+}
+
+.sentence.supported {
+  border-color: #16a34a;
+  background: rgba(22, 163, 74, 0.1);
+}
+
+.sentence.unsupported {
+  border-color: #dc2626;
+  background: rgba(220, 38, 38, 0.08);
+}
+
+.sentence-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.sentence-text {
+  font-size: 0.95rem;
+}
+
+.evidence {
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+.evidence span.highlight {
+  background: rgba(250, 204, 21, 0.2);
+  border-radius: 0.25rem;
+  padding: 0 0.15rem;
+}
+
+@media (max-width: 768px) {
+  .inputs {
+    grid-template-columns: 1fr;
+  }
+}
+

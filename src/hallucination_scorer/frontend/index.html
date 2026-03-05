@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>LLM Hallucination Detector &amp; Scorer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>LLM Hallucination Detector &amp; Scorer</h1>
+      <section class="inputs">
+        <div class="input-block">
+          <label for="claim">Claim</label>
+          <textarea id="claim" rows="4" placeholder="Enter an LLM-generated claim..."></textarea>
+        </div>
+        <div class="input-block">
+          <label for="context">Context (one chunk per line)</label>
+          <textarea id="context" rows="6" placeholder="Paste supporting evidence, one chunk per line..."></textarea>
+        </div>
+      </section>
+      <button id="score-btn">Score claim</button>
+      <section id="results" class="results hidden"></section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+  </html>
+
