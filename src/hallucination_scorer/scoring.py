@@ -8,6 +8,7 @@ from .config import CONFIG
 from .nli_model import get_nli_model
 from .schemas import Chunk, GroundingResponse, SentenceGrounding
 from .sentence_splitter import split_into_sentences
+from .utils.cost_tracking import zero_cost_metadata
 
 
 def _compute_evidence_span(sentence: str, chunk_text: str) -> Tuple[str | None, int | None, int | None]:
@@ -52,6 +53,7 @@ def score_claim_against_chunks(claim: str, chunks: List[Chunk]) -> GroundingResp
             calibrated_confidence=0.0,
             used_retrieval=False,
             retrieved_chunks=None,
+            cost_metadata=zero_cost_metadata(),
         )
 
     chunk_texts = [c.text for c in chunks]
@@ -116,6 +118,7 @@ def score_claim_against_chunks(claim: str, chunks: List[Chunk]) -> GroundingResp
         calibrated_confidence=overall_score,
         used_retrieval=False,
         retrieved_chunks=None,
+        cost_metadata=zero_cost_metadata(),
     )
     return response
 

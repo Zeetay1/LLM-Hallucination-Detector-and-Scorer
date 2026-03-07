@@ -3,8 +3,6 @@ from __future__ import annotations
 from typing import Iterable, List
 
 import numpy as np
-import torch
-from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 from .config import CONFIG
 
@@ -16,13 +14,13 @@ class NLIModel:
     """
 
     def __init__(self) -> None:
+        from transformers import AutoModelForSequenceClassification, AutoTokenizer
         self._tokenizer = AutoTokenizer.from_pretrained(CONFIG.nli.model_name)
         self._model = AutoModelForSequenceClassification.from_pretrained(
             CONFIG.nli.model_name
         )
         self._model.eval()
 
-    @torch.no_grad()
     def predict_entailment_scores(
         self,
         premises: Iterable[str],
@@ -34,6 +32,7 @@ class NLIModel:
         Returns:
             A NumPy array of shape (N,) with probabilities in [0, 1].
         """
+        import torch
         pair_list: List[tuple[str, str]] = list(zip(premises, hypotheses))
         if not pair_list:
             return np.zeros((0,), dtype=float)
@@ -47,11 +46,12 @@ class NLIModel:
             return_tensors="pt",
         )
 
-        outputs = self._model(**inputs)
-        logits = outputs.logits
-        probs = torch.softmax(logits, dim=-1)
-        entailment_probs = probs[:, CONFIG.nli.entailment_label_id]
-        return entailment_probs.cpu().numpy()
+        with torch.no_grad():
+            outputs = self._model(**inputs)
+            logits = outputs.logits
+            probs = torch.softmax(logits, dim=-1)
+            entailment_probs = probs[:, CONFIG.nli.entailment_label_id]
+            return entailment_probs.cpu().numpy()
 
     def predict_entailment_matrix(
         self,

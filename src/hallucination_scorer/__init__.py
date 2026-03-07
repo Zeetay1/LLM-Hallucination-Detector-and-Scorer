@@ -5,6 +5,7 @@ from typing import List
 from .config import CONFIG
 from .schemas import (
     Chunk,
+    CostMetadata,
     FixtureLabel,
     GroundingRequest,
     GroundingResponse,
@@ -57,6 +58,7 @@ def score_claim(request: GroundingRequest) -> GroundingResponse:
 
 __all__ = [
     "Chunk",
+    "CostMetadata",
     "SentenceGrounding",
     "GroundingRequest",
     "GroundingResponse",

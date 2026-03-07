@@ -47,6 +47,18 @@ class SentenceGrounding(BaseModel):
     )
 
 
+class CostMetadata(BaseModel):
+    """Token and cost tracking for external model API calls."""
+
+    tokens_in: int = Field(0, ge=0, description="Input tokens for external API calls; 0 if none.")
+    tokens_out: int = Field(0, ge=0, description="Output tokens; 0 if none.")
+    estimated_cost: float = Field(
+        0.0,
+        ge=0.0,
+        description="Estimated cost from config pricing constants; 0.0 if no external API.",
+    )
+
+
 class GroundingRequest(BaseModel):
     claim: str = Field(..., description="LLM-generated claim to be evaluated")
     context_chunks: Optional[List[str]] = Field(
@@ -91,6 +103,10 @@ class GroundingResponse(BaseModel):
     retrieved_chunks: Optional[List[Chunk]] = Field(
         None,
         description="Chunks retrieved from a corpus when retrieval mode is used (Phase 3+).",
+    )
+    cost_metadata: CostMetadata = Field(
+        default_factory=lambda: CostMetadata(),
+        description="Token and cost metadata; attached to every response and persisted with results.",
     )
 
 

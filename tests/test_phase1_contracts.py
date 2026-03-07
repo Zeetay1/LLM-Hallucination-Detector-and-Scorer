@@ -1,9 +1,11 @@
 import json
 from pathlib import Path
+from unittest.mock import patch
 
-import pytest
+import numpy as np
 
 from hallucination_scorer import (
+    CostMetadata,
     FixtureLabel,
     GroundingRequest,
     GroundingResponse,
@@ -62,17 +64,18 @@ def test_request_and_response_schemas_construct():
         calibrated_confidence=0.5,
         used_retrieval=False,
         retrieved_chunks=None,
+        cost_metadata=CostMetadata(),
     )
     assert response.overall_grounding_score == 0.5
     assert len(response.per_sentence) == 1
+    assert response.cost_metadata is not None
 
 
 def test_obvious_hallucination_scores_low():
     """
     An obvious hallucination should receive a low overall grounding score.
 
-    This test is expected to fail until the scoring pipeline is implemented
-    in later phases.
+    NLI is mocked so no live model is loaded; mock returns low entailment scores.
     """
     examples = load_phase1_examples()
     obvious = next(e for e in examples if e.label_type == "obvious_hallucination")
@@ -82,7 +85,13 @@ def test_obvious_hallucination_scores_low():
         context_chunks=obvious.context_chunks,
     )
 
-    response = score_claim(request)
+    with patch("hallucination_scorer.scoring.get_nli_model") as mock_nli:
+        # Low entailment scores so obvious hallucination scores < 0.3
+        mock_model = mock_nli.return_value
+        def _low_scores(sentences, chunk_texts):
+            return np.full((len(sentences), len(chunk_texts)), 0.1)
+        mock_model.predict_entailment_matrix.side_effect = _low_scores
+        response = score_claim(request)
 
     assert response.overall_grounding_score < 0.3
 

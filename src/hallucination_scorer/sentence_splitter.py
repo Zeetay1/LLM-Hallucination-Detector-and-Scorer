@@ -2,8 +2,6 @@ from __future__ import annotations
 
 from typing import List
 
-import spacy
-
 _nlp = None
 
 
@@ -17,6 +15,7 @@ def _get_nlp():
     """
     global _nlp
     if _nlp is None:
+        import spacy
         nlp = spacy.blank("en")
         if "sentencizer" not in nlp.pipe_names:
             nlp.add_pipe("sentencizer")

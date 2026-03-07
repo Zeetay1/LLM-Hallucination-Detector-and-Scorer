@@ -4,7 +4,6 @@ from dataclasses import dataclass
 from typing import List
 
 import numpy as np
-from sentence_transformers import SentenceTransformer
 
 from .config import CONFIG
 from .schemas import Chunk
@@ -50,6 +49,7 @@ class EmbeddingIndex:
     model_name: str = "sentence-transformers/all-MiniLM-L6-v2"
 
     def __post_init__(self) -> None:
+        from sentence_transformers import SentenceTransformer
         self._model = SentenceTransformer(self.model_name)
         self._embeddings: np.ndarray | None = None
         self._chunks: List[Chunk] = []
